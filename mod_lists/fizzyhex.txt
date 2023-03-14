@@ -5,7 +5,7 @@
 # E.g: BabaCorp, BabaCorp.711
 # Barcodes can be found as the names of the folders when you download mods.
 
-### SPAWNABLES
+### WEAPONS
 # Essential Guns
 Rexmeck, Rexmeck.WeaponPack
 Rexmeck, Rexmeck.GunAttachments
@@ -15,12 +15,18 @@ Rexmeck, Rexmeck.RPG7
 # Other Guns
 Rexmeck, Plzbeans.Mac10
 
+# Essential Spawnables
+Tinotin, Tinotin.FunctionalSeats
+
 # ---------------------------------
+
+### VEHICLES
 
 # Vehicles
 Electric.Bonetube
 BaBaCorp.FliggolGigul
-krisp.Dirtbike
+krisp!, krisp.Dirtbike
+krisp!, krisp.NeonCitySedan
 
 # ---------------------------------
 

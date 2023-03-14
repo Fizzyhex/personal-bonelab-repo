@@ -127,8 +127,8 @@ response = requests.get("https://blrepo.laund.moe/repository.json")
 latestRepo = response.json()
 
 CustomRepository(
-    title = "Fizzyhex's Installed Mod Repo",
-    description = "Personal mod repo for mods installed by Fizzy",
+    title = "Fizzyhex: Fizzy's Mod Folder",
+    description = "Personal mod repo for mods I have installed :>",
     latestRepo = latestRepo,
     barcodesFp = "mod_lists/fizzyhex.txt"
 ).output_to_file("outputs/fizzyhex_personal_repo.json")
