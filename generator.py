@@ -10,7 +10,7 @@ class ModRepoFilterer():
     
     def filter_for_mods(self, barcodes):
         # oIds = [f"o:{x}" for x in ids]
-        allowedRefs = []
+        allowedRefs = ["o:1", "o:2", "o:3", "o:4", "o:5", "o:6", "o:7", "o:8", "o:9"]
         
         for key, object in self.json["objects"].items():
             if not "barcode" in object:
@@ -45,6 +45,7 @@ class CustomRepository():
     def __init__(self, *, title, description, latestRepo, barcodesFp):
         with open(barcodesFp, "r") as file:
             self.barcodes = file.read().split("\n")
+            print(self.barcodes)
 
         self.title = title
         self.description = description
@@ -71,4 +72,4 @@ CustomRepository(
     barcodesFp = "mod_lists/fizzyhex.txt"
 ).output_to_file("outputs/fizzyhex_personal_repo.json")
 
-print("Up to date!")
+print("Updated!")
