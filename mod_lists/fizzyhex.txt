@@ -2,7 +2,7 @@
 # duplicate names and troll mods from appearing in the repository
 #
 # Format: <mod.io username>, <barcode>
-# E.g: BabaCorp, BabaCorp.711
+# E.g: alexthebaba, BabaCorp.711
 # Barcodes can be found as the names of the folders when you download mods.
 
 ### WEAPONS
@@ -23,10 +23,10 @@ Tinotin, Tinotin.FunctionalSeats
 ### VEHICLES
 
 # Vehicles
-Electric.Bonetube
-BaBaCorp.FliggolGigul
-krisp!, krisp.Dirtbike
-krisp!, krisp.NeonCitySedan
+electricdragonj, Electric.Bonetube
+alexthebaba, BaBaCorp.FliggolGigul
+ickrisp, krisp.Dirtbike
+ickrisp, krisp.NeonCitySedan
 
 # ---------------------------------
 
@@ -34,17 +34,17 @@ krisp!, krisp.NeonCitySedan
 # Sandbox
 Fizzyhex.TheRoundtable
 Alfi.SpaceLab
-BaBaCorp, BaBaCorp.711
+alexthebaba, BaBaCorp.711
 
 # Deathmatch Maps
-BaBaCorp, BaBaCorp.DMBaBaCorp
-BaBaCorp, BaBaCorp.DMProtoWorld
-BaBaCorp, BaBaCorp.DMLaserTag
+alexthebaba, BaBaCorp.DMBaBaCorp
+alexthebaba, BaBaCorp.DMProtoWorld
+alexthebaba, BaBaCorp.DMLaserTag
 
 # ---------------------------------
 
 ### AVATARS
 cvrnage.Vortigaunt
-Alfiiii, Alfi.PeasantNullsFusionCustoms
+alfi-lad, Alfi.PeasantNullsFusionCustoms
 Kepler, kepler.exonardoragon
 ethosaur, Ethosaur.SlimeJanitor

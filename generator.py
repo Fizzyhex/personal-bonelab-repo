@@ -50,11 +50,12 @@ class ModRepoFilterer():
         self.json["objects"]["o:1"]["title"] = title
         self.json["objects"]["o:1"]["description"] = description
     
-    def filter_for_mods(self, barcodes):
+    def filter_for_mods(self, barcodes: list):
         # oIds = [f"o:{x}" for x in ids]
         barcodeMatcher = lambda x, y: compare_barcode(x, y) 
         allowedRefs = ["o:1", "o:2", "o:3", "o:4", "o:5", "o:6", "o:7", "o:8", "o:9"]
-        
+        found = []
+
         for key, object in self.json["objects"].items():
             if not "barcode" in object:
                 continue
@@ -64,6 +65,7 @@ class ModRepoFilterer():
             for compare in barcodes:
                 if barcodeMatcher(object["barcode"], compare):
                     barcodeMatch = True
+                    found.append(compare)
                     break
             
             if not barcodeMatch:
@@ -83,6 +85,13 @@ class ModRepoFilterer():
                 allowedRefs.append(target["ref"])
 
         newObjects = self.json["objects"].copy()
+        missing = [x for x in barcodes if not x in found]
+
+        if len(missing) > 0:
+            print(
+                f"The following mods could not be found ({len(missing)}):",
+                ", ".join([get_barcode_info(x)[1] for x in missing])
+            )
 
         for key in self.json["objects"].keys():
             if not key in allowedRefs:
