@@ -1,13 +1,25 @@
-# Guns
+### SPAWNABLES
+# Essential Guns
 Rexmeck.WeaponPack
 Rexmeck.GunAttachments
 
-# Maps
+# Vehicles
+Electric.Bonetube
+BaBaCorp.FliggolGigul
+krisp.Dirtbike
+
+
+### MAPS
+# Sandbox
 Fizzyhex.TheRoundtable
 Alfi.SpaceLab
 BaBaCorp.711
+
+# Deathmatch Maps
 BaBaCorp.DMBaBaCorp
 BaBaCorp.DMProtoWorld
+BaBaCorp.DMLaserTag
+
 
 # Avatars
 cvrnage.Vortigaunt
