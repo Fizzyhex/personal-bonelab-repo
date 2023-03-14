@@ -2,11 +2,16 @@ import requests
 import os
 import json
 
-def get_barcode_info(barcode):
+# BarcodeInfo: Map Author, Map Name
+
+def get_barcode_info(barcode: str):
     barcodeList = barcode
     
     if type(barcode) == str:
-        barcodeList = barcode.split(" ")
+        barcodeList = barcode.split(", ")
+
+    if len(barcodeList) == 1:
+        barcodeList = ["", barcodeList[0]]
 
     return barcodeList
 
@@ -14,15 +19,30 @@ def get_barcode_info(barcode):
 def compare_barcode(barcode, compareTo):
     barcode1 = get_barcode_info(barcode)
     barcode2 = get_barcode_info(compareTo)
+    isStringsComparable = lambda x, y: x != "" and y != ""
 
-    if barcode1[0].lower() != barcode2[0].lower():
-        return False
-    
-    if len(barcode1) > 1 and len(barcode2) > 1:
-        if barcode1[1].lower() != barcode[2].lower():
+    for index, x in enumerate(barcode1):
+        y = barcode2[index]
+
+        if not isStringsComparable(x, y):
+            continue
+
+        if x.lower() != y.lower():
             return False
 
     return True
+
+def barcode_tests():
+    tests = [
+        "BabaCorp, AlexTheBaba.711",
+        "AlexTheBaba.711",
+        ["BabaCorp", "AlexTheBaba.711"],
+        ["AlexTheBaba.711"]
+    ]
+
+    for x in tests:
+        print(get_barcode_info(x))
+        print(compare_barcode(x, tests[0]))
 
 class ModRepoFilterer():
     def __init__(self, *, title, description, json):
@@ -32,24 +52,33 @@ class ModRepoFilterer():
     
     def filter_for_mods(self, barcodes):
         # oIds = [f"o:{x}" for x in ids]
-        lowercaseBarcodes = [barcode.lower() for barcode in barcodes]
+        barcodeMatcher = lambda x, y: compare_barcode(x, y) 
         allowedRefs = ["o:1", "o:2", "o:3", "o:4", "o:5", "o:6", "o:7", "o:8", "o:9"]
         
         for key, object in self.json["objects"].items():
             if not "barcode" in object:
                 continue
 
-            if object["barcode"].lower() in lowercaseBarcodes:
-                if not "targets" in object:
-                    continue
+            barcodeMatch = False
 
-                if type(object["targets"]) != dict:
-                    continue
+            for compare in barcodes:
+                if barcodeMatcher(object["barcode"], compare):
+                    barcodeMatch = True
+                    break
+            
+            if not barcodeMatch:
+                return
 
-                allowedRefs.append(key)
-                
-                for target in object["targets"].values():
-                    allowedRefs.append(target["ref"])
+            if not "targets" in object:
+                continue
+
+            if type(object["targets"]) != dict:
+                continue
+
+            allowedRefs.append(key)
+            
+            for target in object["targets"].values():
+                allowedRefs.append(target["ref"])
 
         newObjects = self.json["objects"].copy()
 
@@ -87,6 +116,9 @@ class CustomRepository():
 
             filter.filter_for_mods(self.barcodes)
             json.dump(filter.get_list(), outputFile)
+
+if __name__ == "__main__":
+    barcode_tests()
 
 response = requests.get("https://blrepo.laund.moe/repository.json")
 latestRepo = response.json()
