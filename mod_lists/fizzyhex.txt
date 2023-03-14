@@ -1,7 +1,14 @@
+# Guns
 Rexmeck.WeaponPack
 Rexmeck.GunAttachments
+
+# Maps
 Fizzyhex.TheRoundtable
 Alfi.SpaceLab
 BaBaCorp.711
+BaBaCorp.DMBaBaCorp
+BaBaCorp.DMProtoWorld
+
+# Avatars
 cvrnage.Vortigaunt
 Alfi.PeasantNullsFusionCustoms

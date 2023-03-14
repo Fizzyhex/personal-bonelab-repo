@@ -10,13 +10,14 @@ class ModRepoFilterer():
     
     def filter_for_mods(self, barcodes):
         # oIds = [f"o:{x}" for x in ids]
+        lowercaseBarcodes = [barcode.lower() for barcode in barcodes]
         allowedRefs = ["o:1", "o:2", "o:3", "o:4", "o:5", "o:6", "o:7", "o:8", "o:9"]
         
         for key, object in self.json["objects"].items():
             if not "barcode" in object:
                 continue
 
-            if object["barcode"] in barcodes:
+            if object["barcode"].lower() in lowercaseBarcodes:
                 if not "targets" in object:
                     continue
 
@@ -41,10 +42,13 @@ class ModRepoFilterer():
     def get_list(self):
         return self.json
 
+def ParseBarcodeData(data):
+    return [x for x in data.split("\n") if len(x) > 0 and not x.startswith("#")]
+
 class CustomRepository():
     def __init__(self, *, title, description, latestRepo, barcodesFp):
         with open(barcodesFp, "r") as file:
-            self.barcodes = file.read().split("\n")
+            self.barcodes = ParseBarcodeData(file.read())
             print(self.barcodes)
 
         self.title = title
