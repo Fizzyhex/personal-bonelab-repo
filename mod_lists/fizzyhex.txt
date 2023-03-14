@@ -13,13 +13,12 @@ krisp.Dirtbike
 # Sandbox
 Fizzyhex.TheRoundtable
 Alfi.SpaceLab
-BaBaCorp.711
+BaBaCorp BaBaCorp.711
 
 # Deathmatch Maps
-BaBaCorp.DMBaBaCorp
-BaBaCorp.DMProtoWorld
-BaBaCorp.DMLaserTag
-
+BaBaCorp BaBaCorp.DMBaBaCorp
+BaBaCorp BaBaCorp.DMProtoWorld
+BaBaCorp BaBaCorp.DMLaserTag
 
 # Avatars
 cvrnage.Vortigaunt

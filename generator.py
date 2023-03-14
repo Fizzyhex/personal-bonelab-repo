@@ -2,6 +2,28 @@ import requests
 import os
 import json
 
+def get_barcode_info(barcode):
+    barcodeList = barcode
+    
+    if type(barcode) == str:
+        barcodeList = barcode.split(" ")
+
+    return barcodeList
+
+# TODO: implement this because people keep making bootleg 7-11s and it's annoying
+def compare_barcode(barcode, compareTo):
+    barcode1 = get_barcode_info(barcode)
+    barcode2 = get_barcode_info(compareTo)
+
+    if barcode1[0].lower() != barcode2[0].lower():
+        return False
+    
+    if len(barcode1) > 1 and len(barcode2) > 1:
+        if barcode1[1].lower() != barcode[2].lower():
+            return False
+
+    return True
+
 class ModRepoFilterer():
     def __init__(self, *, title, description, json):
         self.json = json
