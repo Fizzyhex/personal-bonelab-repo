@@ -67,7 +67,7 @@ class ModRepoFilterer():
                     break
             
             if not barcodeMatch:
-                return
+                continue
 
             if not "targets" in object:
                 continue
@@ -76,6 +76,8 @@ class ModRepoFilterer():
                 continue
 
             allowedRefs.append(key)
+
+            print("Adding", object["barcode"], "by", object.get("author", "???"), "to the list")
             
             for target in object["targets"].values():
                 allowedRefs.append(target["ref"])
@@ -100,7 +102,7 @@ class CustomRepository():
     def __init__(self, *, title, description, latestRepo, barcodesFp):
         with open(barcodesFp, "r") as file:
             self.barcodes = ParseBarcodeData(file.read())
-            print(self.barcodes)
+            print("Barcodes:", self.barcodes)
 
         self.title = title
         self.description = description
@@ -120,6 +122,7 @@ class CustomRepository():
 if __name__ == "__main__":
     barcode_tests()
 
+print("Making a request to the mod.io repository...")
 response = requests.get("https://blrepo.laund.moe/repository.json")
 latestRepo = response.json()
 
@@ -130,4 +133,4 @@ CustomRepository(
     barcodesFp = "mod_lists/fizzyhex.txt"
 ).output_to_file("outputs/fizzyhex_personal_repo.json")
 
-print("Updated!")
+print("Updated files!")
