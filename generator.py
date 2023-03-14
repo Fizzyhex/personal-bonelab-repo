@@ -69,4 +69,6 @@ CustomRepository(
     description = "Personal mod repo for mods installed by Fizzy",
     latestRepo = latestRepo,
     barcodesFp = "mod_lists/fizzyhex.txt"
-).output_to_file("outputs/personalRepo.json")
+).output_to_file("outputs/fizzyhex_personal_repo.json")
+
+print("Up to date!")
