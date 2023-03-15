@@ -12,6 +12,10 @@ Rexmeck, Rexmeck.GunAttachments
 Rexmeck, Rexmeck.DesertEagle
 Rexmeck, Rexmeck.RPG7
 
+# Fun Weapons
+alexthebaba, BaBaCorp.Flamethrower
+alexthebaba, BaBaCorp.MicroNukeGrenade
+
 # Other Guns
 Rexmeck, Plzbeans.Mac10
 
